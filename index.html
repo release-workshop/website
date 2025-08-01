@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Workshop - Crafting Better Deployments</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons (optional, but good for professionalism) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Define custom colors as CSS variables for use with Tailwind's arbitrary values */
+        :root {
+            --color-primary-accent: #2C5F6D; /* Deep Teal */
+            --color-text-dark: #333333; /* Charcoal Gray */
+            --color-background-light: #FBF8F4; /* Warm Off-White */
+            --color-card-background: #FFFFFF; /* Crisp White */
+            --color-border-subtle: #E0E0E0; /* Light Gray */
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif; /* Body text font */
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+            /* Subtle background gradient for visual branding */
+            background-image: linear-gradient(to bottom right, var(--color-background-light), #EDEAE6);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif; /* New Heading font */
+        }
+
+        /* Custom style for the button to add a subtle shadow and hover effect */
+        .btn-primary {
+            background-color: var(--color-primary-accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #244f5a; /* Slightly darker teal on hover */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-8">
+
+    <!-- Navigation Bar -->
+    <nav class="w-full max-w-3xl flex justify-between items-center py-4 px-6 rounded-xl shadow-md mb-8" style="background-color: var(--color-card-background);">
+        <div class="flex items-center">
+            <!-- Company Name/Logo Placeholder -->
+            <a href="#" class="text-2xl font-bold" style="color: var(--color-primary-accent);">Release Workshop</a>
+            <!-- You could add an SVG logo here -->
+        </div>
+        <div class="flex space-x-6">
+            <a href="#" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-200">Home</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-200">About Us</a>
+            <a href="#" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-200">Contact</a>
+        </div>
+    </nav>
+
+    <div class="p-12 rounded-xl shadow-lg max-w-3xl w-full" style="background-color: var(--color-card-background);">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4" style="color: var(--color-primary-accent);">Release Workshop: Precision in Every Deployment</h1>
+            <p class="text-xl leading-relaxed" style="color: var(--color-text-dark);">Empowering Software Engineers with tools and practices for seamless, high-performing releases.</p>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6" style="color: var(--color-primary-accent);">Our Craft: Elevating Software Delivery</h2>
+            <p class="leading-loose" style="color: var(--color-text-dark);">
+                At Release Workshop, we believe that the journey from code to customer should be as smooth and efficient as possible. We're dedicated to <span class="font-medium" style="color: var(--color-primary-accent);">crafting solutions</span> that simplify complex deploy and release processes, allowing software engineers to focus on innovation rather than operational hurdles. Our approach blends <span class="font-medium" style="color: var(--color-primary-accent);">cutting-edge tools with best practices</span>, fostering environments where high-performing teams can truly thrive.
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-semibold mb-6" style="color: var(--color-primary-accent);">Our Philosophy: Building with Purpose</h2>
+            <ul class="list-disc list-inside space-y-3" style="color: var(--color-text-dark);">
+                <li><span class="font-medium" style="color: var(--color-primary-accent);">Empowerment:</span> Providing engineers with the control and insights needed for confident releases.</li>
+                <li><span class="font-medium" style="color: var(--color-primary-accent);">Good Practice:</span> Encouraging robust, repeatable, and secure deployment workflows.</li>
+                <li><span class="font-medium" style="color: var(--color-primary-accent);">Performance:</span> Helping teams achieve faster, more reliable, and ultimately higher-quality software delivery.</li>
+                <li><span class="font-medium" style="color: var(--color-primary-accent);">Collaboration:</span> Designing solutions that integrate seamlessly into existing CI/CD pipelines and team structures.</li>
+            </ul>
+        </section>
+
+        <!-- Stronger Call to Action -->
+        <section class="text-center mb-12">
+            <h2 class="text-3xl font-semibold mb-6" style="color: var(--color-primary-accent);">Ready to Refine Your Release Process?</h2>
+            <p class="leading-loose mb-8" style="color: var(--color-text-dark);">
+                Discover how Release Workshop can empower your team to achieve seamless, high-performing deployments.
+            </p>
+            <a href="#" class="btn-primary">
+                Learn More About Our Approach
+            </a>
+        </section>
+
+        <footer class="text-center text-sm mt-12 pt-6 border-t" style="color: var(--color-text-dark); border-color: var(--color-border-subtle);">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-gray-600 hover:text-indigo-700 transition duration-200">Privacy Policy</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-700 transition duration-200">Terms of Service</a>
+                <a href="#" class="text-gray-600 hover:text-indigo-700 transition duration-200">Sitemap</a>
+            </div>
+            <div class="flex justify-center space-x-4 mb-4">
+                <!-- Social Media Icons (placeholders) -->
+                <a href="#" class="text-gray-600 hover:text-indigo-700 transition duration-200 text-xl"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-600 hover:text-indigo-700 transition duration-200 text-xl"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-gray-600 hover:text-indigo-700 transition duration-200 text-xl"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2025 Release Workshop Ltd. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
