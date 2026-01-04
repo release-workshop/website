@@ -1,0 +1,13 @@
+{
+  "name": "control-path-website",
+  "version": "1.0.0",
+  "description": "Control Path website with CSS-only syntax highlighting",
+  "scripts": {
+    "highlight": "node highlight.js",
+    "build": "npm run highlight"
+  },
+  "devDependencies": {
+    "prismjs": "^1.29.0"
+  }
+}
+
