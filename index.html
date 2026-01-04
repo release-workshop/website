@@ -149,6 +149,7 @@
                     <li><strong>Runtime errors:</strong> String-based APIs like <code>getFlag('new_dashbord')</code> only fail in production</li>
                     <li><strong>Configuration drift:</strong> Flag definitions live separately from code, creating sync issues</li>
                     <li><strong>No type safety:</strong> Typos and incorrect flag names aren't caught until runtime</li>
+                    <li><strong>Flag rot:</strong> Unused flags accumulate over time, cluttering codebases and increasing maintenance burden</li>
                 </ul>
                 <div class="highlight-box mt-6 p-5 rounded-lg">
                     <p class="leading-relaxed">
@@ -208,6 +209,30 @@ const enabled = evaluator.newDashbord(user, context);
                         Two-layer architecture: OpenFeature Provider + generated type-safe wrappers.
                     </p>
                 </div>
+                
+                <div class="feature-card p-6 rounded-lg border border-subtle">
+                    <h3 class="text-xl font-semibold mb-3">
+                        <i class="fas fa-broom mr-2" aria-hidden="true"></i>Prevents Flag Rot
+                    </h3>
+                    <p class="mb-3">
+                        Unused flag methods show up as unused code in your IDE. Git history provides a complete audit trail to track flag usage and identify stale flags.
+                    </p>
+                    <p class="text-sm mt-2 text-secondary">
+                        Cleanup becomes a natural part of code maintenance, not a separate process.
+                    </p>
+                </div>
+                
+                <div class="feature-card p-6 rounded-lg border border-subtle">
+                    <h3 class="text-xl font-semibold mb-3">
+                        <i class="fas fa-history mr-2" aria-hidden="true"></i>Complete Audit Trail
+                    </h3>
+                    <p class="mb-3">
+                        Every flag change is version-controlled in Git. See exactly which flags were enabled at any point in time, making debugging production issues straightforward.
+                    </p>
+                    <p class="text-sm mt-2 text-secondary">
+                        No more guessing which flag configuration was active when an incident occurred.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -220,13 +245,22 @@ const enabled = evaluator.newDashbord(user, context);
                         Define your flags in <code>flags.definitions.yaml</code> in your repository:
                     </p>
                     <pre><code>flags:
-  - key: new_dashboard
+  - name: new_dashboard
     type: boolean
+    default: OFF
     description: "New dashboard UI experiment"
   
-  - key: checkout_experiment
-    type: variation
-    variations: ["control", "variant_a", "variant_b"]</code></pre>
+  - name: checkout_experiment
+    type: multivariate
+    default: control
+    description: "Checkout flow experiment"
+    variations:
+      - name: CONTROL
+        value: "control"
+      - name: VARIANT_A
+        value: "variant_a"
+      - name: VARIANT_B
+        value: "variant_b"</code></pre>
                 </div>
                 
                 <div>
@@ -243,16 +277,17 @@ const enabled = evaluator.newDashbord(user, context);
                     <p class="leading-relaxed mb-3">
                         Generated SDKs provide type-safe methods with full IDE autocomplete:
                     </p>
-                    <pre><code>import { createEvaluator } from '@controlpath/sdk';
+                    <pre><code>import { Evaluator } from './flags';
 
-const evaluator = createEvaluator(astArtifact);
+const evaluator = new Evaluator();
+await evaluator.init({ artifact: './production.ast' });
 
 // Type-safe flag evaluation
-const showNewDashboard = evaluator.newDashboard(user, context);
+const showNewDashboard = await evaluator.newDashboard(user, context);
 // ✅ TypeScript knows this returns boolean
 
 // Batch evaluation with type safety
-const flags = evaluator.evaluateBatch(
+const flags = await evaluator.evaluateBatch(
   ['newDashboard', 'checkoutExperiment'] as const,
   user,
   context
