@@ -6,7 +6,7 @@ yarn-error.log*
 # Note: package-lock.json should be committed for consistent installs
 
 # Build outputs
-tailwind.css
+# tailwind.css - committed for static site deployment
 *.css.map
 
 # OS files
